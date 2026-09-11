@@ -1,4 +1,4 @@
-# LBHND 的使用场景与按层处理
+# 原生 vLLM 的 LBHND 使用场景
 
 ## 对话一：LBHND 适合什么场景
 
@@ -165,4 +165,3 @@ Layer 0 → Layer 1 → Layer 2 → ...
 操作对象是“一个 block 的很多层”吗？
     是：偏向 BLHND
 ```
-
