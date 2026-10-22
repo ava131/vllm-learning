@@ -1,0 +1,1426 @@
+{
+  "zh": [
+    {
+      "id": "math_travel",
+      "domain": "数学",
+      "style": "solve",
+      "subject": "这道行程问题的解法",
+      "focus": [
+        "相遇时间的计算",
+        "速度单位统一",
+        "方程列法"
+      ],
+      "entities": [
+        "甲车",
+        "乙车",
+        "A 站",
+        "B 站"
+      ],
+      "facts": [
+        [
+          "相距",
+          "km",
+          120,
+          480
+        ],
+        [
+          "速度",
+          "km/h",
+          40,
+          120
+        ]
+      ],
+      "deliverable": "完整解题步骤",
+      "who": "我家孩子"
+    },
+    {
+      "id": "math_probability",
+      "domain": "数学",
+      "style": "solve",
+      "subject": "这道摸球概率题",
+      "focus": [
+        "样本空间",
+        "条件概率",
+        "期望计算"
+      ],
+      "entities": [
+        "红球",
+        "白球",
+        "箱子"
+      ],
+      "facts": [
+        [
+          "球数",
+          "个",
+          3,
+          10
+        ]
+      ],
+      "deliverable": "推导过程",
+      "who": "同桌"
+    },
+    {
+      "id": "math_geometry",
+      "domain": "数学",
+      "style": "solve",
+      "subject": "这道圆的切线证明",
+      "focus": [
+        "辅助线作法",
+        "相似三角形",
+        "切线判定定理"
+      ],
+      "entities": [
+        "圆心 O",
+        "切点 P",
+        "弦 AB"
+      ],
+      "deliverable": "证明步骤",
+      "who": "学生"
+    },
+    {
+      "id": "math_sequence",
+      "domain": "数学",
+      "style": "solve",
+      "subject": "这个数列的求和",
+      "focus": [
+        "通项公式",
+        "错位相减",
+        "裂项相消"
+      ],
+      "entities": [
+        "等差数列",
+        "等比数列",
+        "前 n 项"
+      ],
+      "deliverable": "求和过程",
+      "who": "备考的同学"
+    },
+    {
+      "id": "phy_circuit",
+      "domain": "物理",
+      "style": "diagnose",
+      "subject": "这个串联电路不亮",
+      "focus": [
+        "电源电压",
+        "电阻接触不良",
+        "开关状态"
+      ],
+      "entities": [
+        "电池",
+        "开关",
+        "灯泡",
+        "导线"
+      ],
+      "facts": [
+        [
+          "电压",
+          "V",
+          2,
+          12
+        ],
+        [
+          "电阻",
+          "Ω",
+          10,
+          100
+        ]
+      ],
+      "deliverable": "排查顺序",
+      "who": "实验小组"
+    },
+    {
+      "id": "phy_buoyancy",
+      "domain": "物理",
+      "style": "explain",
+      "subject": "浮力实验的读数偏差",
+      "focus": [
+        "排水体积",
+        "读数视线",
+        "液体密度"
+      ],
+      "entities": [
+        "量筒",
+        "弹簧秤",
+        "铁块"
+      ],
+      "facts": [
+        [
+          "体积",
+          "mL",
+          50,
+          200
+        ],
+        [
+          "密度",
+          "g/cm3",
+          1,
+          2
+        ]
+      ],
+      "deliverable": "误差分析",
+      "who": "物理老师"
+    },
+    {
+      "id": "chem_balance",
+      "domain": "化学",
+      "style": "solve",
+      "subject": "这个氧化还原方程式配平",
+      "focus": [
+        "化合价变化",
+        "电子守恒",
+        "系数约简"
+      ],
+      "entities": [
+        "高锰酸钾",
+        "盐酸",
+        "氯气"
+      ],
+      "deliverable": "配平过程",
+      "who": "课代表"
+    },
+    {
+      "id": "chem_experiment",
+      "domain": "化学",
+      "style": "explain",
+      "subject": "这个实验的现象异常",
+      "focus": [
+        "试剂浓度",
+        "反应温度",
+        "杂质干扰"
+      ],
+      "entities": [
+        "试管",
+        "酒精灯",
+        "试纸"
+      ],
+      "facts": [
+        [
+          "温度",
+          "℃",
+          20,
+          90
+        ],
+        [
+          "浓度",
+          "mol/L",
+          1,
+          5
+        ]
+      ],
+      "deliverable": "现象解释",
+      "who": "实验课同学"
+    },
+    {
+      "id": "bio_photosynthesis",
+      "domain": "生物",
+      "style": "explain",
+      "subject": "光合作用的曲线题",
+      "focus": [
+        "光照强度",
+        "二氧化碳浓度",
+        "呼吸作用"
+      ],
+      "entities": [
+        "叶肉细胞",
+        "叶绿体",
+        "气孔"
+      ],
+      "deliverable": "曲线解读",
+      "who": "高三学生"
+    },
+    {
+      "id": "bio_genetics",
+      "domain": "生物",
+      "style": "solve",
+      "subject": "这道遗传系谱题",
+      "focus": [
+        "显隐性判断",
+        "基因型推导",
+        "概率计算"
+      ],
+      "entities": [
+        "父亲",
+        "母亲",
+        "子女"
+      ],
+      "deliverable": "推导过程",
+      "who": "学生"
+    },
+    {
+      "id": "cn_poetry",
+      "domain": "语文",
+      "style": "explain",
+      "subject": "这首唐诗的鉴赏",
+      "focus": [
+        "意象选择",
+        "炼字",
+        "情感表达"
+      ],
+      "entities": [
+        "王维",
+        "边塞",
+        "月亮"
+      ],
+      "deliverable": "鉴赏思路",
+      "who": "语文老师"
+    },
+    {
+      "id": "cn_grammar",
+      "domain": "语文",
+      "style": "review",
+      "subject": "这段话里的病句",
+      "focus": [
+        "成分残缺",
+        "搭配不当",
+        "语序混乱"
+      ],
+      "entities": [
+        "主语",
+        "谓语",
+        "宾语"
+      ],
+      "deliverable": "修改建议",
+      "who": "同学"
+    },
+    {
+      "id": "cn_essay",
+      "domain": "语文",
+      "style": "create",
+      "subject": "一篇关于坚持的议论文",
+      "focus": [
+        "开头切入",
+        "分论点",
+        "论据选择"
+      ],
+      "entities": [
+        "司马迁",
+        "苏轼",
+        "运动员"
+      ],
+      "deliverable": "写作提纲",
+      "who": "语文老师"
+    },
+    {
+      "id": "cn_idiom",
+      "domain": "语文",
+      "style": "explain",
+      "subject": "这几个成语的区别",
+      "focus": [
+        "语义侧重",
+        "感情色彩",
+        "使用场景"
+      ],
+      "entities": [
+        "不负众望",
+        "不孚众望",
+        "差强人意"
+      ],
+      "deliverable": "辨析说明",
+      "who": "备考学生"
+    },
+    {
+      "id": "his_tang",
+      "domain": "历史",
+      "style": "explain",
+      "subject": "唐朝的三省六部制",
+      "focus": [
+        "中书省起草",
+        "门下省审核",
+        "尚书省执行"
+      ],
+      "entities": [
+        "唐太宗",
+        "宰相",
+        "六部"
+      ],
+      "deliverable": "制度讲解",
+      "who": "历史课代表"
+    },
+    {
+      "id": "his_ww2",
+      "domain": "历史",
+      "style": "compare",
+      "subject": "二战的两个转折点",
+      "focus": [
+        "斯大林格勒战役",
+        "中途岛海战",
+        "转折意义"
+      ],
+      "entities": [
+        "苏军",
+        "美军",
+        "太平洋战场"
+      ],
+      "deliverable": "对比分析",
+      "who": "历史小组"
+    },
+    {
+      "id": "his_figure",
+      "domain": "历史",
+      "style": "explain",
+      "subject": "对秦始皇的评价",
+      "focus": [
+        "统一功绩",
+        "统治手段",
+        "历史条件"
+      ],
+      "entities": [
+        "郡县制",
+        "长城",
+        "焚书坑儒"
+      ],
+      "deliverable": "评价框架",
+      "who": "老师"
+    },
+    {
+      "id": "law_contract",
+      "domain": "法律",
+      "style": "review",
+      "subject": "这份租房合同的风险点",
+      "focus": [
+        "押金条款",
+        "违约条款",
+        "维修责任"
+      ],
+      "entities": [
+        "房东",
+        "租客",
+        "中介"
+      ],
+      "deliverable": "风险清单",
+      "who": "朋友"
+    },
+    {
+      "id": "law_policy",
+      "domain": "政策",
+      "style": "explain",
+      "subject": "这项新政的影响",
+      "focus": [
+        "适用对象",
+        "过渡期安排",
+        "落地难点"
+      ],
+      "entities": [
+        "企业",
+        "个人",
+        "主管部门"
+      ],
+      "deliverable": "政策解读",
+      "who": "同事"
+    },
+    {
+      "id": "intl_conflict",
+      "domain": "国际关系",
+      "style": "explain",
+      "subject": "这个地区冲突的来龙去脉",
+      "focus": [
+        "历史背景",
+        "各方诉求",
+        "外部因素"
+      ],
+      "entities": [
+        "邻国",
+        "联合国",
+        "能源通道"
+      ],
+      "deliverable": "背景梳理",
+      "who": "同学"
+    },
+    {
+      "id": "geo_climate",
+      "domain": "地理",
+      "style": "explain",
+      "subject": "这种气候类型的成因",
+      "focus": [
+        "纬度位置",
+        "洋流影响",
+        "地形抬升"
+      ],
+      "entities": [
+        "赤道",
+        "副热带高压",
+        "西风带"
+      ],
+      "deliverable": "成因分析",
+      "who": "地理课代表"
+    },
+    {
+      "id": "geo_city",
+      "domain": "地理",
+      "style": "plan",
+      "subject": "这个新区的规划方案",
+      "focus": [
+        "功能分区",
+        "交通组织",
+        "生态廊道"
+      ],
+      "entities": [
+        "老城区",
+        "地铁",
+        "湿地"
+      ],
+      "deliverable": "规划要点",
+      "who": "规划院同事"
+    },
+    {
+      "id": "geo_hazard",
+      "domain": "地理",
+      "style": "diagnose",
+      "subject": "这片山坡的滑坡风险",
+      "focus": [
+        "坡度",
+        "岩性",
+        "降雨"
+      ],
+      "entities": [
+        "监测点",
+        "排水沟",
+        "护坡"
+      ],
+      "facts": [
+        [
+          "坡度",
+          "°",
+          15,
+          45
+        ],
+        [
+          "降雨",
+          "mm",
+          50,
+          200
+        ]
+      ],
+      "deliverable": "风险研判",
+      "who": "乡镇干部"
+    },
+    {
+      "id": "astro_constellation",
+      "domain": "天文",
+      "style": "explain",
+      "subject": "夏季大三角怎么认",
+      "focus": [
+        "织女星",
+        "天津四",
+        "牛郎星"
+      ],
+      "entities": [
+        "银河",
+        "天琴座",
+        "天鹅座"
+      ],
+      "deliverable": "辨认方法",
+      "who": "天文社同学"
+    },
+    {
+      "id": "astro_mission",
+      "domain": "天文",
+      "style": "explain",
+      "subject": "这次深空探测的任务设计",
+      "focus": [
+        "轨道设计",
+        "载荷配置",
+        "通信窗口"
+      ],
+      "entities": [
+        "探测器",
+        "地面站",
+        "中继星"
+      ],
+      "deliverable": "任务解读",
+      "who": "科普读者"
+    },
+    {
+      "id": "art_oil",
+      "domain": "艺术",
+      "style": "explain",
+      "subject": "这幅油画的光影处理",
+      "focus": [
+        "光源方向",
+        "明暗对比",
+        "笔触"
+      ],
+      "entities": [
+        "伦勃朗",
+        "肖像",
+        "画布"
+      ],
+      "deliverable": "画面分析",
+      "who": "画室同学"
+    },
+    {
+      "id": "art_calligraphy",
+      "domain": "书法",
+      "style": "review",
+      "subject": "这幅临帖的问题",
+      "focus": [
+        "结体",
+        "用笔",
+        "章法"
+      ],
+      "entities": [
+        "颜体",
+        "横画",
+        "落款"
+      ],
+      "deliverable": "改进建议",
+      "who": "书法老师"
+    },
+    {
+      "id": "art_music",
+      "domain": "音乐",
+      "style": "explain",
+      "subject": "这段的和声进行",
+      "focus": [
+        "调性",
+        "功能圈",
+        "离调"
+      ],
+      "entities": [
+        "主和弦",
+        "属七和弦",
+        "副属和弦"
+      ],
+      "deliverable": "和声分析",
+      "who": "乐队朋友"
+    },
+    {
+      "id": "art_guqin",
+      "domain": "古琴",
+      "style": "advise",
+      "subject": "初学者选琴与练习",
+      "focus": [
+        "琴材",
+        "音色",
+        "练习节奏"
+      ],
+      "entities": [
+        "桐木",
+        "丝弦",
+        "琴桌"
+      ],
+      "facts": [
+        [
+          "预算",
+          "元",
+          2000,
+          20000
+        ]
+      ],
+      "deliverable": "选购建议",
+      "who": "朋友"
+    },
+    {
+      "id": "art_photo",
+      "domain": "摄影",
+      "style": "review",
+      "subject": "这组照片的构图",
+      "focus": [
+        "主体突出",
+        "留白",
+        "引导线"
+      ],
+      "entities": [
+        "前景",
+        "主体",
+        "背景"
+      ],
+      "deliverable": "构图建议",
+      "who": "摄影群"
+    },
+    {
+      "id": "life_cooking",
+      "domain": "烹饪",
+      "style": "solve",
+      "subject": "这道红烧肉总是发柴",
+      "focus": [
+        "火候",
+        "糖色",
+        "收汁"
+      ],
+      "entities": [
+        "五花肉",
+        "冰糖",
+        "砂锅"
+      ],
+      "facts": [
+        [
+          "时间",
+          "分钟",
+          30,
+          120
+        ],
+        [
+          "温度",
+          "℃",
+          80,
+          180
+        ]
+      ],
+      "deliverable": "做法调整",
+      "who": "家人"
+    },
+    {
+      "id": "life_fitness",
+      "domain": "健身",
+      "style": "plan",
+      "subject": "三个月的减脂计划",
+      "focus": [
+        "训练频率",
+        "饮食结构",
+        "恢复"
+      ],
+      "entities": [
+        "力量训练",
+        "有氧",
+        "睡眠"
+      ],
+      "facts": [
+        [
+          "每周次数",
+          "次",
+          2,
+          6
+        ]
+      ],
+      "deliverable": "训练计划",
+      "who": "朋友"
+    },
+    {
+      "id": "life_travel",
+      "domain": "旅行",
+      "style": "plan",
+      "subject": "五天四晚的行程",
+      "focus": [
+        "路线安排",
+        "住宿位置",
+        "预算控制"
+      ],
+      "entities": [
+        "高铁",
+        "民宿",
+        "景区"
+      ],
+      "facts": [
+        [
+          "预算",
+          "元",
+          3000,
+          15000
+        ],
+        [
+          "天数",
+          "天",
+          3,
+          7
+        ]
+      ],
+      "deliverable": "行程单",
+      "who": "家人"
+    },
+    {
+      "id": "life_renovation",
+      "domain": "装修",
+      "style": "plan",
+      "subject": "老房翻新的预算",
+      "focus": [
+        "水电改造",
+        "主材",
+        "人工"
+      ],
+      "entities": [
+        "厨房",
+        "卫生间",
+        "地板"
+      ],
+      "facts": [
+        [
+          "面积",
+          "平米",
+          50,
+          140
+        ],
+        [
+          "预算",
+          "万元",
+          8,
+          40
+        ]
+      ],
+      "deliverable": "预算表",
+      "who": "业主"
+    },
+    {
+      "id": "life_pet",
+      "domain": "宠物",
+      "style": "advise",
+      "subject": "猫咪最近的饮食问题",
+      "focus": [
+        "主食搭配",
+        "零食控制",
+        "饮水"
+      ],
+      "entities": [
+        "猫粮",
+        "罐头",
+        "饮水机"
+      ],
+      "deliverable": "喂养建议",
+      "who": "铲屎官"
+    },
+    {
+      "id": "life_parenting",
+      "domain": "育儿",
+      "style": "advise",
+      "subject": "两岁孩子的作息",
+      "focus": [
+        "午睡",
+        "晚睡时间",
+        "户外活动"
+      ],
+      "entities": [
+        "绘本",
+        "辅食",
+        "托班"
+      ],
+      "deliverable": "作息表",
+      "who": "新手爸妈"
+    },
+    {
+      "id": "life_health",
+      "domain": "健康",
+      "style": "explain",
+      "subject": "体检报告上的几个箭头",
+      "focus": [
+        "血脂",
+        "尿酸",
+        "肝功能"
+      ],
+      "entities": [
+        "总胆固醇",
+        "尿酸",
+        "转氨酶"
+      ],
+      "facts": [
+        [
+          "指标值",
+          "",
+          20,
+          90
+        ]
+      ],
+      "deliverable": "指标解读",
+      "who": "家人"
+    },
+    {
+      "id": "life_sleep",
+      "domain": "健康",
+      "style": "advise",
+      "subject": "入睡困难",
+      "focus": [
+        "作息规律",
+        "屏幕时间",
+        "咖啡因"
+      ],
+      "entities": [
+        "卧室",
+        "手机",
+        "咖啡"
+      ],
+      "deliverable": "改善建议",
+      "who": "朋友"
+    },
+    {
+      "id": "fin_fund",
+      "domain": "理财",
+      "style": "compare",
+      "subject": "两只指数基金的定投",
+      "focus": [
+        "费率",
+        "跟踪误差",
+        "规模"
+      ],
+      "entities": [
+        "沪深300",
+        "中证500",
+        "ETF"
+      ],
+      "facts": [
+        [
+          "规模",
+          "亿",
+          10,
+          800
+        ]
+      ],
+      "deliverable": "对比结论",
+      "who": "同事"
+    },
+    {
+      "id": "fin_budget",
+      "domain": "理财",
+      "style": "plan",
+      "subject": "家庭年度预算",
+      "focus": [
+        "固定支出",
+        "弹性支出",
+        "储蓄率"
+      ],
+      "entities": [
+        "房贷",
+        "教育",
+        "旅行"
+      ],
+      "facts": [
+        [
+          "收入",
+          "万元",
+          20,
+          80
+        ],
+        [
+          "储蓄率",
+          "%",
+          10,
+          40
+        ]
+      ],
+      "deliverable": "预算方案",
+      "who": "另一半"
+    },
+    {
+      "id": "job_resume",
+      "domain": "职场",
+      "style": "review",
+      "subject": "这份简历的问题",
+      "focus": [
+        "项目描述",
+        "量化结果",
+        "排版"
+      ],
+      "entities": [
+        "教育经历",
+        "实习",
+        "技能"
+      ],
+      "deliverable": "修改建议",
+      "who": "学弟"
+    },
+    {
+      "id": "job_interview",
+      "domain": "职场",
+      "style": "plan",
+      "subject": "面试前的准备",
+      "focus": [
+        "自我介绍",
+        "项目追问",
+        "反问环节"
+      ],
+      "entities": [
+        "面试官",
+        "HR",
+        "团队负责人"
+      ],
+      "deliverable": "准备清单",
+      "who": "朋友"
+    },
+    {
+      "id": "job_weekly",
+      "domain": "职场",
+      "style": "create",
+      "subject": "这周的周报",
+      "focus": [
+        "进展",
+        "风险",
+        "下周计划"
+      ],
+      "entities": [
+        "项目 A",
+        "项目 B",
+        "依赖方"
+      ],
+      "deliverable": "周报初稿",
+      "who": "组长"
+    },
+    {
+      "id": "tech_incident",
+      "domain": "技术",
+      "style": "diagnose",
+      "subject": "payment-api 的 5xx 比例",
+      "focus": [
+        "下游依赖超时",
+        "连接池耗尽",
+        "灰度发布"
+      ],
+      "entities": [
+        "payment-api",
+        "order-gateway",
+        "redis-cluster"
+      ],
+      "facts": [
+        [
+          "5xx 率",
+          "%",
+          2,
+          9
+        ],
+        [
+          "p99",
+          "ms",
+          800,
+          3600
+        ]
+      ],
+      "deliverable": "故障复盘",
+      "who": "值班群"
+    },
+    {
+      "id": "tech_review",
+      "domain": "技术",
+      "style": "review",
+      "subject": "这个 PR 引入的慢查询",
+      "focus": [
+        "索引缺失",
+        "N+1 查询",
+        "事务范围"
+      ],
+      "entities": [
+        "OrderRepository",
+        "UserMapper",
+        "SQL"
+      ],
+      "facts": [
+        [
+          "耗时",
+          "ms",
+          300,
+          5200
+        ]
+      ],
+      "deliverable": "修改建议",
+      "who": "提交者"
+    },
+    {
+      "id": "tech_sql",
+      "domain": "技术",
+      "style": "diagnose",
+      "subject": "这条 SQL 的性能",
+      "focus": [
+        "执行计划",
+        "索引选择",
+        "回表"
+      ],
+      "entities": [
+        "订单表",
+        "用户表",
+        "联合索引"
+      ],
+      "facts": [
+        [
+          "扫描行数",
+          "万",
+          10,
+          900
+        ],
+        [
+          "耗时",
+          "ms",
+          200,
+          8000
+        ]
+      ],
+      "deliverable": "优化方案",
+      "who": "DBA"
+    },
+    {
+      "id": "tech_metric",
+      "domain": "技术",
+      "style": "diagnose",
+      "subject": "日活报表对不上",
+      "focus": [
+        "埋点口径",
+        "去重逻辑",
+        "时区截断"
+      ],
+      "entities": [
+        "ods.event",
+        "dwd.user",
+        "ads.dau"
+      ],
+      "facts": [
+        [
+          "差异",
+          "%",
+          1,
+          6
+        ]
+      ],
+      "deliverable": "口径说明",
+      "who": "数据平台"
+    },
+    {
+      "id": "office_excel",
+      "domain": "办公",
+      "style": "solve",
+      "subject": "这个多条件汇总的公式",
+      "focus": [
+        "SUMIFS",
+        "通配符",
+        "数组写法"
+      ],
+      "entities": [
+        "订单表",
+        "地区列",
+        "金额列"
+      ],
+      "deliverable": "公式写法",
+      "who": "同事"
+    },
+    {
+      "id": "office_ppt",
+      "domain": "办公",
+      "style": "create",
+      "subject": "这份季度汇报的 PPT 结构",
+      "focus": [
+        "结论先行",
+        "图表选择",
+        "页数控制"
+      ],
+      "entities": [
+        "营收",
+        "成本",
+        "用户数"
+      ],
+      "deliverable": "大纲",
+      "who": "领导"
+    },
+    {
+      "id": "office_minutes",
+      "domain": "办公",
+      "style": "review",
+      "subject": "这份会议纪要",
+      "focus": [
+        "决议记录",
+        "待办事项",
+        "责任人"
+      ],
+      "entities": [
+        "参会人",
+        "议题",
+        "截止时间"
+      ],
+      "deliverable": "修改建议",
+      "who": "项目组"
+    },
+    {
+      "id": "edu_lesson",
+      "domain": "教学",
+      "style": "create",
+      "subject": "一节 45 分钟的教案",
+      "focus": [
+        "导入",
+        "课堂活动",
+        "评价环节"
+      ],
+      "entities": [
+        "学生",
+        "小组",
+        "教具"
+      ],
+      "facts": [
+        [
+          "时长",
+          "分钟",
+          45,
+          90
+        ]
+      ],
+      "deliverable": "教案框架",
+      "who": "教研组"
+    },
+    {
+      "id": "edu_homework",
+      "domain": "教育",
+      "style": "advise",
+      "subject": "孩子写作业拖拉",
+      "focus": [
+        "时间管理",
+        "学习环境",
+        "反馈方式"
+      ],
+      "entities": [
+        "书桌",
+        "计时器",
+        "家长"
+      ],
+      "deliverable": "改善方案",
+      "who": "家长"
+    },
+    {
+      "id": "game_go",
+      "domain": "围棋",
+      "style": "review",
+      "subject": "这盘棋的中盘失误",
+      "focus": [
+        "大局观",
+        "死活",
+        "官子"
+      ],
+      "entities": [
+        "角部",
+        "中腹",
+        "劫争"
+      ],
+      "deliverable": "复盘要点",
+      "who": "棋友"
+    },
+    {
+      "id": "game_basketball",
+      "domain": "体育",
+      "style": "plan",
+      "subject": "球队的进攻战术",
+      "focus": [
+        "挡拆",
+        "无球跑动",
+        "攻防转换"
+      ],
+      "entities": [
+        "控卫",
+        "中锋",
+        "锋线"
+      ],
+      "deliverable": "战术安排",
+      "who": "教练"
+    },
+    {
+      "id": "car_maintenance",
+      "domain": "汽车",
+      "style": "advise",
+      "subject": "六万公里的保养项目",
+      "focus": [
+        "机油",
+        "刹车系统",
+        "轮胎"
+      ],
+      "entities": [
+        "发动机",
+        "刹车片",
+        "胎压"
+      ],
+      "facts": [
+        [
+          "里程",
+          "公里",
+          40000,
+          100000
+        ]
+      ],
+      "deliverable": "保养清单",
+      "who": "车主"
+    },
+    {
+      "id": "garden_rose",
+      "domain": "园艺",
+      "style": "advise",
+      "subject": "阳台月季总是黄叶",
+      "focus": [
+        "浇水",
+        "光照",
+        "施肥"
+      ],
+      "entities": [
+        "花盆",
+        "土壤",
+        "阳台"
+      ],
+      "deliverable": "养护建议",
+      "who": "花友"
+    }
+  ],
+  "en": [
+    {
+      "id": "en_incident",
+      "domain": "SRE",
+      "style": "diagnose",
+      "subject": "the 5xx rate of payment-api",
+      "focus": [
+        "upstream timeouts",
+        "connection pool",
+        "the canary release"
+      ],
+      "entities": [
+        "payment-api",
+        "order-gateway",
+        "redis"
+      ],
+      "facts": [
+        [
+          "5xx rate",
+          "%",
+          2,
+          9
+        ]
+      ],
+      "deliverable": "incident review",
+      "who": "the on-call channel"
+    },
+    {
+      "id": "en_math",
+      "domain": "math",
+      "style": "solve",
+      "subject": "this word problem",
+      "focus": [
+        "the equation setup",
+        "unit conversion",
+        "the final check"
+      ],
+      "entities": [
+        "car A",
+        "car B",
+        "station C"
+      ],
+      "facts": [
+        [
+          "distance",
+          "km",
+          120,
+          480
+        ]
+      ],
+      "deliverable": "step-by-step solution",
+      "who": "my kid"
+    },
+    {
+      "id": "en_history",
+      "domain": "history",
+      "style": "explain",
+      "subject": "the Silk Road",
+      "focus": [
+        "trade routes",
+        "cultural exchange",
+        "decline"
+      ],
+      "entities": [
+        "Chang'an",
+        "Samarkand",
+        "the Tang court"
+      ],
+      "deliverable": "a short explainer",
+      "who": "study group"
+    },
+    {
+      "id": "en_cooking",
+      "domain": "cooking",
+      "style": "solve",
+      "subject": "the steak that turns out dry",
+      "focus": [
+        "heat control",
+        "resting time",
+        "seasoning"
+      ],
+      "entities": [
+        "cast iron pan",
+        "ribeye",
+        "butter"
+      ],
+      "facts": [
+        [
+          "minutes",
+          "min",
+          3,
+          12
+        ]
+      ],
+      "deliverable": "adjusted method",
+      "who": "family"
+    },
+    {
+      "id": "en_travel",
+      "domain": "travel",
+      "style": "plan",
+      "subject": "a five-day trip",
+      "focus": [
+        "route",
+        "lodging",
+        "budget"
+      ],
+      "entities": [
+        "train",
+        "guesthouse",
+        "old town"
+      ],
+      "facts": [
+        [
+          "budget",
+          "USD",
+          500,
+          3000
+        ]
+      ],
+      "deliverable": "itinerary",
+      "who": "my partner"
+    },
+    {
+      "id": "en_fitness",
+      "domain": "fitness",
+      "style": "plan",
+      "subject": "a three-month fat loss plan",
+      "focus": [
+        "training frequency",
+        "diet",
+        "recovery"
+      ],
+      "entities": [
+        "strength work",
+        "cardio",
+        "sleep"
+      ],
+      "facts": [
+        [
+          "sessions",
+          "per week",
+          2,
+          6
+        ]
+      ],
+      "deliverable": "training plan",
+      "who": "a friend"
+    },
+    {
+      "id": "en_resume",
+      "domain": "career",
+      "style": "review",
+      "subject": "this resume",
+      "focus": [
+        "project bullets",
+        "quantified results",
+        "layout"
+      ],
+      "entities": [
+        "education",
+        "internship",
+        "skills"
+      ],
+      "deliverable": "revision notes",
+      "who": "a junior colleague"
+    },
+    {
+      "id": "en_photo",
+      "domain": "photography",
+      "style": "review",
+      "subject": "this photo set",
+      "focus": [
+        "subject",
+        "negative space",
+        "leading lines"
+      ],
+      "entities": [
+        "foreground",
+        "subject",
+        "background"
+      ],
+      "deliverable": "composition notes",
+      "who": "the photo group"
+    }
+  ]
+}
