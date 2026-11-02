@@ -8,7 +8,7 @@
 | 文件 | 行数 | 内容 |
 |---|---|---|
 | **`七个算法汇总.md`** | 682 | ⭐ **先看这份**：7 个算法，先讲读写流水账与链/树，再逐项写「论文地址 / 实现思路 / 解决什么问题 / 开源仓库 / 实现情况 / 相关 PR 和 issue / 在 Ascend 上怎么做」 |
-| **`GDN-RecoverSSM-实现方案.md`** | 444 | ⭐ **要开工看这份**：ReplaySSM 原理与完整公式、issue #19987 要求与名词表、KDA RecoverSSM 在 vllm-ascend 的现状（版本/文件/算子）、GDN 工作量拆解（可复用 / 需重写 / 人天估算 / 风险） |
+| **`GDN-RecoverSSM-实现方案.md`** | 481 | ⭐ **要开工看这份**：ReplaySSM/RecoverSSM 命名关系、ReplaySSM 原理与完整公式、issue #19987 要求与名词表、KDA RecoverSSM 在 vllm-ascend 的现状（版本/文件/算子）、GDN 工作量拆解（可复用 / 需重写 / 人天估算 / 风险） |
 | `GDN-MTP-N+1-state-survey.md` | 1386 | ⭐ **主文档**：七个方案精读 + 统一数学推导（含可直接照着实现的 8 步）+ 引擎落地逐 PR 核验 + Ascend 三期方案与风险 |
 | `raw/github_issues_vllm_ascend.md` | 577 | vLLM / vllm-ascend 的 PR/issue 逐条核验（含 `MambaSpec` 的 n+1 代码出处） |
 | `raw/sglang_and_repos.md` | 589 | SGLang 线性注意力架构 + 七个方案开源实现核查（含 SGLang ReplaySSM 合入 PR） |

@@ -8,6 +8,43 @@
 
 ---
 
+## 先分清三个名字
+
+| 名字 | 是什么 | 出处 |
+|---|---|---|
+| **ReplaySSM** | **论文/算法名**（Princeton + NVIDIA，Tri Dao 等） | arXiv 2610.13778；<https://github.com/Johnny-Liou/ReplaySSM> |
+| **RecoverSSM** | vLLM 社区给"**投机解码版**"起的名字。机制同源，但**去掉环形缓冲**，改成"每步 verify 写记录、每步 commit 重建" | 类 `RecoverSSMState`（`vllm/v1/worker/gpu/model_states/recoverssm.py`）、`vllm/v1/attention/backends/recoverssm_metadata.py` |
+| **`--use-replayssm`** | **唯一的用户开关**（名字仍叫 replay）。打开后内部会派生 `use_kda_recoverssm` | `vllm/config/cache.py` |
+
+它们怎么串起来（`vllm/config/vllm.py` 的校验器，原文）：
+
+```python
+if not self.cache_config.use_replayssm:
+    self.cache_config.use_kda_recoverssm = False      # 没开 replay，就没有 recover
+    return
+...
+use_kda_recoverssm = (self.num_speculative_tokens > 0 and is_kda_model)
+```
+
+Ascend 侧（`vllm_ascend/patch/platform/patch_replayssm_config.py`）：
+
+```python
+if config.cache_config.use_replayssm and is_glm_recoverssm_model(config):
+    validate_glm_recoverssm(config)
+    config.cache_config.use_kda_recoverssm = True     # KDA 走 RecoverSSM 分支
+```
+
+⇒ **用户只看到 `--use-replayssm` 一个开关，内部把它分成两条路：**
+
+| 开关组合 | 走哪条 |
+|---|---|
+| `--use-replayssm`（无投机 / Mamba2） | **ReplaySSM**：环形缓冲（`replayssm_buffer_len=16`）+ 每 `L` 步 flush |
+| `--use-replayssm` + 投机解码 + KDA/GDN 模型 | **RecoverSSM**：每步 verify 写记录、每步 commit 重建，`num_speculative_blocks = 0` |
+
+**本文的分工**：§1 讲 **ReplaySSM 论文**的原始原理（含环形缓冲、双精度、output-only 验证）；§3/§4 讲 **RecoverSSM 这个变体**（因为 #19987 要落的就是它）。两者的逐项差异见 §1.7。
+
+---
+
 ## 0. 结论摘要
 
 | 问题 | 结论 |
