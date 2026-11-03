@@ -17,6 +17,32 @@
 | **vLLM `v0.30.0`（2026-09-22）里有完整的 KDA RecoverSSM Triton 实现** | 已 clone 到本地并核对：`vllm/models/kimi_k3/nvidia/ops/recoverssm.py` **1067 行 / 6 个 `@triton.jit` kernel**（`_kda_gate`、`_kda_recurrent_step`、`_kda_recoverssm_verify_kernel`、`_prepare_commit_plan_kernel`、`_compact_conv_state_kernel`、`_commit_kda_state_kernel`）；`vllm/config/cache.py` 已有 `use_replayssm` / `use_kda_recoverssm` |
 | **vLLM 至今没有 GDN RecoverSSM** | #61309 / #58863 仍 open；vLLM 已发到 `v0.33.0` |
 
+### 0.2 main 与 v0.30.0 到底差在哪（实测）
+
+| 维度 | v0.30.0 | main（2026-11-03） | 对我们的影响 |
+|---|---|---|---|
+| 落后程度 | — | **642 个 commit / 300 个文件** | 不小，但不是"另一个项目" |
+| **依赖版本** | torch-npu **2.10.0.post7**、triton-ascend **3.6.0.post2** | **完全相同** | ✅ **环境零差异**（我之前把 v0.31.0rc1 的 post4/3.2.2 记混了） |
+| **通用 RecoverSSM 生命周期** | ✅ **已有**：`vllm/v1/worker/gpu/model_states/recoverssm.py`（`RecoverSSMState.record_step` / `commit_step`），`MambaHybridModelState` 里由 `use_kda_recoverssm` 控制 | 同 | ✅ **最关键的底座已经在 0.30.0 里** |
+| **Ascend 侧的消费点** | ✅ **已有**：`patch/worker/patch_v2/patch_model_runner.py` 传 `use_replayssm`；`_310p/worker/v2/model_state.py` 已在调 `self.recoverssm.commit_step(...)`；`patch_bind_kv_cache.py` 有 `share_replayssm_ring_trackers` | 同 | ✅ 说明"谁来调 commit"这件事 0.30.0 已经接好了 |
+| **KDA 具体算子** | ❌ 缺（`ops/triton/kda/recoverssm.py`） | ✅ 1451 行 | 缺的**只是算子 + 模型接线** |
+| `ops/gdn.py` | 897 行 | 929 行（+46/−14，主要是 `vllm_version_is("0.32.0")` 兼容） | 差异小 |
+| `ops/gdn_attn_builder.py` | 1022 行 | 1336 行（+376/−62） | **差异大，不能直接 cp** |
+| `worker/v2/model_states/mamba_hybrid.py` | 357 行 | 498 行（+154/−13） | 中等 |
+| 模型支持（Qwen3.8） | ✅ `qwen3_5` 路径 | ✅ 同 | 无差异 |
+
+**结论：0.30.0 缺的是"算子 + 接线"，不缺"机制"。** 而算子是可以照着 main 写的——它只 import 6 个符号，**这 6 个在 0.30.0 里全部存在**（已本地核实）：
+
+```python
+is_conv_state_dim_first()          # vllm/model_executor/layers/mamba/mamba_utils.py:48  ✅
+NULL_BLOCK_ID                      # vllm/v1/attention/backends/utils.py:47           ✅
+is_950()                           # vllm_ascend/device/device_config.py:61           ✅
+get_ub_size_bytes()                # vllm_ascend/ops/triton/triton_utils.py:112       ✅
+init_device_properties_triton()    # vllm_ascend/ops/triton/triton_utils.py:71        ✅
+triton / tl                        # vllm.triton_utils                                  ✅
+```
+而且 main 的那个 1451 行文件里**没有硬编码 glm5next**（grep 无命中），模型耦合全在 `models/glm5next/recoverssm_metadata.py` 里 ⇒ **算子可以近乎原样落到 0.30.0，只要重接模型层**。
+
 ### 三条可选路线
 
 | 路线 | 做法 | 优点 | 缺点 |
@@ -25,7 +51,9 @@
 | **B. 用 v0.31.0rc1 / main** | 直接站在现成的 Ascend KDA 实现上 | 有 1451 行现成实现可抄 | 偏离你指定的版本 |
 | **C. v0.30.0 + vendor 参考**（**推荐**） | 主仓仍用 v0.30.0，但把 **main 上的 KDA 实现**和**上游 GDN 实现**作为参考材料放进 `docs/reference/` | 版本满足要求，参考材料齐全 | 参考代码与基线不完全一致，移植时要小心 API 差异 |
 
-**本文默认按 C 走**；若你更想直接站上 KDA 现成实现，改走 B，工作量减少约 20%。
+**本文按 C 走**（参考 main 的实现，落在 v0.30.0）。依据见 §0.2：0.30.0 已经具备 RecoverSSM 的**生命周期与消费点**，缺的只是算子实现，而算子只依赖 6 个符号且全部存在。
+
+> 路线 B（上 main）的唯一好处是"KDA 现成可跑"，但我们要交的是 **GDN**，KDA 只是模板——**KDA 能不能在 0.30.0 上跑起来，其实无关紧要**。为它把整个基线迁到 main，反而引入 642 个 commit 的移动靶风险。
 
 ---
 
@@ -213,11 +241,11 @@ vllm_ascend/ops/triton/kda/solve_tril.py                         402 行  # 三�
 | M0 | 环境 + baseline + oracle | **3–5** | oracle 不难，但 0.30.0 上跑通 Qwen3.8 可能要修 |
 | M1 | verify 算子 | **5–8** | R0 的 verify 约 160 行（含 2 个 helper），GDN 改门控 + GQA |
 | M2 | commit + plan + conv | **6–9** | R0 的 commit 约 190 行 + plan/conv 约 160 行，可大段照抄 |
-| M3 | 缓存与元数据 | **4–6** | 对齐 161 行 metadata + cache spec |
-| M4 | MRV2 集成 | **5–7** | 上游 config 改 40/8 + 模型改 87 行，Ascend 还要 patch |
+| M3 | 缓存与元数据 | **3–5** | 生命周期已在 0.30.0，只需对齐 161 行 metadata + cache spec |
+| M4 | MRV2 集成 | **4–6** | `self.recoverssm` 消费点已在 0.30.0（`_310p/model_state.py` 已在调 `commit_step`），只需接 GDN |
 | M5 | 测试与图 | **6–9** | 对齐 #18765 的 384 UT + 45 NPU 测 |
 | M6 | 性能 | **4–6** | UB 调参是不确定性最大的部分 |
-| **合计** | | **32–48 人天** | 取中位 **≈ 40 人天（8 周）** |
+| **合计** | | **30–45 人天** | 取中位 **≈ 37 人天（7.4 周）** |
 
 **与"仿照 KDA"的差距解释**：`vLLM 0.30.0` 自带完整 Triton KDA（1067 行），所以**算法层几乎不用摸索**；真正多花时间的是 **Ascend 化**（UB/tiling/地址表），这部分只能参考 main 上的 1451 行实现。若走路线 B（直接站在 0.31 的 Ascend KDA 上），M1/M2/M3 各能再省 1–2 人天，约 **28–40 人天**。
 
@@ -313,9 +341,9 @@ vllm_ascend/ops/triton/kda/solve_tril.py                         402 行  # 三�
 
 | # | 问题 | 我的建议 |
 |---|---|---|
-| Q1 | **版本**：严格 v0.30.0（路线 A/C），还是用 v0.31.0rc1/main（路线 B）？ | 如果目标只是"做出东西"，选 **B**（省 6–9 人天）；如果要交付在 0.30.0 上，选 **C** |
+| **Q1** | ~~版本：0.30.0 还是 0.31/main~~ | ✅ **已定：留在 v0.30.0，参考 main 的算子实现**（见 §0.2 的依据） |
 | Q2 | **目标硬件**：A2 / A3 / A5？ | KDA 文档明确 **A2 未验证**；优先 A3 或 A5。若必须 A2，要先补 A2 验证（+3–5 人天） |
-| Q3 | **目标模型**：Qwen3.8-27B（48 GDN 层 / 48 heads）？还是更小的 Qwen3.5-4B 做原型？ | **建议双轨**：先用 4B 打通链路，再用 27B 验收 |
+| Q3 | **目标模型**：Qwen3.8-27B（48 GDN 层 / 48 heads）？还是更小的 Qwen3.5-4B 做原型？ | 风险已排除（Qwen3.8 走 `qwen3_5` 路径，v0.30.0 就支持）。仍建议**双轨**：先用 4B 打通链路，再用 27B 验收 |
 | Q4 | **MTP 深度范围**：只支持 Q=4，还是 2–8？ | 先 Q=4（覆盖主流 MTP3），再参数化 |
 | Q5 | **是否要 prefix caching（align 模式）** | 第一版**不要**（RFC 也说单独验证），但设计时要给 boundary 留接口 |
 
@@ -350,5 +378,6 @@ vllm_ascend/ops/triton/kda/solve_tril.py                         402 行  # 三�
 
 ## 11. 一句话总结
 
-> **改动量：新增约 1500–2000 行（1 个内核文件占一半）+ 修改约 210 行（8 个文件）；时间 32–48 人天（中位 40，约 8 周）；token 约 1.0–2.2M（正常 1.6–2.0M）。**
-> **最大不确定性不是算法，而是 0.30.0 这个版本本身**——它既没有 Ascend 侧的 KDA 实现可抄，也要先确认 Qwen3.8-27B 能跑。
+> **改动量：新增约 1500–2000 行（1 个内核文件占一半）+ 修改约 210 行（8 个文件）；时间 30–45 人天（中位 37，约 7.5 周）；token 约 0.9–2.1M（正常 1.5–1.9M）。**
+> **版本不是障碍**：0.30.0 已有 RecoverSSM 生命周期与 Ascend 消费点，依赖版本与 main 完全一致，Qwen3.8 走既有 `qwen3_5` 路径；缺的只是算子，而算子只依赖 6 个在 0.30.0 里都存在的符号。
+> **真正的风险转移到**：① UB 预算 ② align 模式的 boundary 折叠 ③ 图捕获。
